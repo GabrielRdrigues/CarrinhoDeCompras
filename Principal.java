@@ -13,11 +13,12 @@ public class Principal{
         carrinho.adiciona_item("telefone",5);
         carrinho.adiciona_item("teclado",2);
         carrinho.finalizaCompra();
-        System.out.println("Imprimindo o estoque após finalizar");
-        for(int k=0;k<estoqueprodutos.estoque.size();k++){
-            System.out.println("nome: "+ estoqueprodutos.estoque.get(k).nome + "quantidade: "
-            + estoqueprodutos.estoque.get(k).quantidade);
-        }
+        System.out.println("A soma dos produtos :" + carrinho.calcula_total());
+        // System.out.println("Imprimindo o estoque após finalizar");
+        // for(int k=0;k<estoqueprodutos.estoque.size();k++){
+        //     System.out.println("nome: "+ estoqueprodutos.estoque.get(k).nome + "quantidade: "
+        //     + estoqueprodutos.estoque.get(k).quantidade);
+        // }
     }
 
 }

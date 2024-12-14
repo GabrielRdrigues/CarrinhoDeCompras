@@ -30,13 +30,20 @@ public class CarrinhoCompra{
             for(int j=0;j<tamanho_estoque;j++){
                 if((itens_do_carrinho.get(i)).nome == (estoque_carrinho.get(j)).nome){
                     (estoque_carrinho.get(j)).quantidade += -(itens_do_carrinho.get(i)).quantidade;
+                    valor_a_pagar += (itens_do_carrinho.get(i)).valor * (itens_do_carrinho.get(i)).quantidade;
                 }
             }
         }
     }
 
     // Retorna o valor total das compras
-    public double getValor(){
+    private double getValor(){
         return valor_a_pagar;
     }
+
+    public double calcula_total(){
+        return getValor();
+    }
+
+
 }
