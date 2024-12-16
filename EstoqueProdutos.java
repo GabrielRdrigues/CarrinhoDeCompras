@@ -9,12 +9,11 @@ public class EstoqueProdutos {
             if (Lista_estoque.get(i).nome.equals(produto.nome)){
                  if (Lista_estoque.get(i).valor != produto.valor){
                      Lista_estoque.get(i).valor = produto.valor;
-                     Lista_estoque.get(i).quantidade += produto.quantidade;
-                     return;
-                 } else{
-                     Lista_estoque.get(i).quantidade += produto.quantidade;
-                     return;
-                 }
+                    //  Lista_estoque.get(i).quantidade += produto.quantidade;
+                    //  return;
+                 } 
+                Lista_estoque.get(i).quantidade += produto.quantidade;
+                return;
             }
         }
         Lista_estoque.add(produto);
