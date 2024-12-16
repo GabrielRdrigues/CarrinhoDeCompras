@@ -1,49 +1,47 @@
 import java.util.ArrayList;
+import java.util.List;
+
 public class CarrinhoCompra{
-    ArrayList<ProdutoEstoque> estoque_carrinho= new ArrayList<ProdutoEstoque>();
-    ArrayList<ProdutoEstoque> itens_do_carrinho = new ArrayList<ProdutoEstoque>();
-    
-    double valor_a_pagar=0;
+    EstoqueProdutos estoque;
+    ArrayList<ProdutoEstoque> Lista_carrinho = new ArrayList<ProdutoEstoque>();
 
-     public CarrinhoCompra(ArrayList<ProdutoEstoque> estoque){
-        estoque_carrinho=estoque;
-     }
-
-    public void adiciona_item(String n,int qtd){
-        for(int i=0;i<3;i++){
-            ProdutoEstoque auxiliar = estoque_carrinho.get(i);
-            if(n.equals(auxiliar.nome)){
-                ProdutoEstoque ProdutoAuxiliar = new ProdutoEstoque(" ",0,0); // Variável auxiliar
-                ProdutoAuxiliar.nome=n;
-                ProdutoAuxiliar.quantidade=qtd;
-                ProdutoAuxiliar.valor= auxiliar.valor;
-                itens_do_carrinho.add(ProdutoAuxiliar); // Adicionando o ProdutoAuxiliar no carrinho
-            }
-        }
+    public CarrinhoCompra(EstoqueProdutos e){
+        estoque = e;
     }
 
-    /*O Método finalizacompra() retira os itens do carrinho do cliente do estoque da loja  */
-    public void finalizaCompra(){ 
-        int tamanho_carrinho = itens_do_carrinho.size();
-        int tamanho_estoque = estoque_carrinho.size();
-        for(int i=0;i<tamanho_carrinho;i++){
-            for(int j=0;j<tamanho_estoque;j++){
-                if((itens_do_carrinho.get(i)).nome == (estoque_carrinho.get(j)).nome){
-                    (estoque_carrinho.get(j)).quantidade += -(itens_do_carrinho.get(i)).quantidade;
-                    valor_a_pagar += (itens_do_carrinho.get(i)).valor * (itens_do_carrinho.get(i)).quantidade;
+    public void adicionaItem(String nome, int quantidade){
+        int i;
+        for (i=0; i<estoque.Lista_estoque.size(); i++) {
+            if (estoque.Lista_estoque.get(i).nome.equals(nome)) {
+                if (estoque.Lista_estoque.get(i).quantidade >= quantidade) {
+                    ProdutoEstoque aux = new ProdutoEstoque(nome, estoque.Lista_estoque.get(i).valor, quantidade);
+                    Lista_carrinho.add(aux);
+                    break;
+                } else {
+                    System.out.println("Não há a quantidade desejada do item requisitado");
+                    break;
                 }
             }
         }
+        if (i >= estoque.Lista_estoque.size())
+            System.out.println("Produto requisitado em falta ou está registrado com nome diferente");
     }
 
-    // Retorna o valor total das compras
-    private double getValor(){
-        return valor_a_pagar;
+    public void finalizaCompra(){
+        for (int i=0; i<Lista_carrinho.size(); i++){
+            for (int j=0; j<estoque.Lista_estoque.size(); j++){
+                if (Lista_carrinho.get(i).nome.equals(estoque.Lista_estoque.get(j).nome))
+                    estoque.Lista_estoque.get(j).quantidade -= Lista_carrinho.get(i).quantidade;
+            }
+        }
+        System.out.println("Compra finalizada com sucesso. Obrigado por comprar na nossa loja!");
     }
 
-    public double calcula_total(){
-        return getValor();
+    public float calculaTotal(){
+        int soma = 0;
+        for (int i=0; i<Lista_carrinho.size(); i++){
+            soma += (Lista_carrinho.get(i).valor * Lista_carrinho.get(i).quantidade);
+        }
+        return soma;
     }
-
-
 }
