@@ -1,11 +1,11 @@
-public class ProdutoEstoque{
+public class ProdutoEstoque {
     String nome;
-    double valor;
-    float quantidade;
-    public ProdutoEstoque(String name,double value,float qtd){
-        nome = name;
-        valor = value;
-        quantidade = qtd;
-    }
+    float valor;
+    int quantidade;
 
+    public ProdutoEstoque(String n, float v, int q){
+        nome = n;
+        valor = v;
+        quantidade = q;
+    }
 }
