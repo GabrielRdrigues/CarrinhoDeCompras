@@ -15,25 +15,30 @@ public class CarrinhoCompra{
                 if (estoque.Lista_estoque.get(i).quantidade >= quantidade) {
                     ProdutoEstoque aux = new ProdutoEstoque(nome, estoque.Lista_estoque.get(i).valor, quantidade);
                     Lista_carrinho.add(aux);
+                    System.out.println("Produto adicionado com sucesso!\n");
                     break;
                 } else {
-                    System.out.println("Não há a quantidade desejada do item requisitado");
+                    System.out.println("Não há a quantidade desejada do item requisitado\n");
                     break;
                 }
             }
         }
         if (i >= estoque.Lista_estoque.size())
-            System.out.println("Produto requisitado em falta ou está registrado com nome diferente");
+            System.out.println("Produto requisitado em falta ou está registrado com nome diferente\n");
     }
 
     public void finalizaCompra(){
+        System.out.println("A soma dos produtos: " + calculaTotal());
         for (int i=0; i<Lista_carrinho.size(); i++){
             for (int j=0; j<estoque.Lista_estoque.size(); j++){
-                if (Lista_carrinho.get(i).nome.equals(estoque.Lista_estoque.get(j).nome))
+                if (Lista_carrinho.get(i).nome.equals(estoque.Lista_estoque.get(j).nome)){
                     estoque.Lista_estoque.get(j).quantidade -= Lista_carrinho.get(i).quantidade;
+                    Lista_carrinho.remove(i);
+                }
+                    
             }
         }
-        System.out.println("Compra finalizada com sucesso. Obrigado por comprar na nossa loja!");
+        System.out.println("Compra finalizada com sucesso. Obrigado por comprar na nossa loja!\n");
     }
 
     public float calculaTotal(){
