@@ -9,12 +9,11 @@ public class EstoqueProdutos {
             if (Lista_estoque.get(i).nome.equals(produto.nome)){
                  if (Lista_estoque.get(i).valor != produto.valor){
                      Lista_estoque.get(i).valor = produto.valor;
-                     Lista_estoque.get(i).quantidade += produto.quantidade;
-                     return;
-                 } else{
-                     Lista_estoque.get(i).quantidade += produto.quantidade;
-                     return;
-                 }
+                    //  Lista_estoque.get(i).quantidade += produto.quantidade;
+                    //  return;
+                 } 
+                Lista_estoque.get(i).quantidade += produto.quantidade;
+                return;
             }
         }
         Lista_estoque.add(produto);
@@ -24,5 +23,6 @@ public class EstoqueProdutos {
         for (int i=0; i<Lista_estoque.size(); i++){
             System.out.println("Item: "+ Lista_estoque.get(i).nome + "  - Valor: " + Lista_estoque.get(i).valor + "  - Quantidade: " + Lista_estoque.get(i).quantidade);
         }
+        System.out.println("");
     }
 }
