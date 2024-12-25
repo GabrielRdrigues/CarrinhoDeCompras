@@ -23,5 +23,6 @@ public class EstoqueProdutos {
         for (int i=0; i<Lista_estoque.size(); i++){
             System.out.println("Item: "+ Lista_estoque.get(i).nome + "  - Valor: " + Lista_estoque.get(i).valor + "  - Quantidade: " + Lista_estoque.get(i).quantidade);
         }
+        System.out.println("");
     }
 }
