@@ -10,10 +10,12 @@ public class Principal {
         // Começando a fazer o "menu"
         Scanner ler = new Scanner(System.in); // o scanf do java é essa classe Scanner
         int opcao=0;
+
         System.out.println("Bem vindo as lojas Nuno Eletromóveis\n");
 
         CarrinhoCompra carrinho = new CarrinhoCompra(estoque);
         while(opcao!=5)
+
         {
             System.out.println("Selecione uma das opções abaixo:");
             System.out.println("1-Inserir item no carrinho\n2-Imprimir catalogo\n3-Finalizar Compra\n4-Sair");
@@ -23,8 +25,6 @@ public class Principal {
 
             switch(opcao)
             {
-                default:
-                    System.out.println("Opção inválida =P");
                 case 1:
                     // Inserir item no carrinho
                     System.out.print("Digite o nome do item:");
@@ -40,6 +40,7 @@ public class Principal {
                 case 3:
                     // Finalizar compra
                     carrinho.finalizaCompra();
+
                     System.out.println("\nDeseja voltar a comprar? (S/N)");
                     if (ler.next().charAt(0) == 'S')
                         break;
@@ -51,20 +52,16 @@ public class Principal {
                 case 4:
                     System.out.println("Obrigado por acessar a Nuno Eletromóveis!");
                     opcao=5;
+
+                    System.out.println("A soma dos produtos : " + carrinho.calculaTotal());
+                    opcao=4;
+                    break;
+                default:
+                    System.out.println("Opção inválida =P");
+
             }
 
         }
-
-
-        /*CarrinhoCompra carrinho = new CarrinhoCompra(estoque);
-
-        carrinho.adicionaItem("teclado", 40);
-
-        estoque.imprimeCatalogo();
-
-        carrinho.finalizaCompra();
-
-        System.out.println("A soma dos produtos : " + carrinho.calculaTotal());*/
 
     }
 }
