@@ -40,7 +40,7 @@ public class Principal {
                 case 3:
                     // Finalizar compra
                     carrinho.finalizaCompra();
-
+                    carrinho.Lista_carrinho.clear(); // Limpando o carrinho antigo
                     System.out.println("\nDeseja voltar a comprar? (S/N)");
                     if (ler.next().charAt(0) == 'S')
                         break;
