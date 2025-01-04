@@ -52,9 +52,6 @@ public class Principal {
                 case 4:
                     System.out.println("Obrigado por acessar a Nuno Eletromóveis!");
                     opcao=5;
-
-                    System.out.println("A soma dos produtos : " + carrinho.calculaTotal());
-                    opcao=4;
                     break;
                 default:
                     System.out.println("Opção inválida =P");
