@@ -39,8 +39,10 @@ public class Principal {
                     break;
                 case 3:
                     // Finalizar compra
-                    carrinho.finalizaCompra();
-                    carrinho.Lista_carrinho.clear(); // Limpando o carrinho antigo
+                    System.out.println("\nPor favor escolha o metodo de pagamento");
+                    String pagamento = ler.nextLine();
+                    carrinho.finalizaCompra(pagamento);
+                    carrinho.limpar_carrinho(); // Limpando o carrinho antigo
                     System.out.println("\nDeseja voltar a comprar? (S/N)");
                     if (ler.next().charAt(0) == 'S')
                         break;

@@ -68,9 +68,10 @@ public class CarrinhoCompra
 
     }
 
-    public void finalizaCompra()
+    
+    public void finalizaCompra(String metodo_pagamento)
     {
-        System.out.println("A soma dos produtos: " + calculaTotal());
+        System.out.println("A soma dos produtos: " + calculaTotal(metodo_pagamento));
         for (int i=0; i<Lista_carrinho.size(); i++)
         {
             for (int j=0; j<estoque.Lista_estoque.size(); j++)
@@ -86,17 +87,25 @@ public class CarrinhoCompra
         System.out.println("Compra finalizada com sucesso. Obrigado por comprar na nossa loja!\n");
     }
 
-    public float calculaTotal()
+    public double calculaTotal(String metodo_pagamento)
     {
-        int soma = 0;
+        double desconto = 0;
+        if(metodo_pagamento.equals("crédito"))
+            desconto = 0.05;
+        if(metodo_pagamento.equals("debito"))
+            desconto = -0.05;
+        if(metodo_pagamento.equals("dinheiro"))
+            desconto = -0.1;
+        double soma = 0;
         for (int i=0; i<Lista_carrinho.size(); i++){
             soma += (Lista_carrinho.get(i).valor * Lista_carrinho.get(i).quantidade);
         }
-        return soma;
+        return soma + (desconto * soma);
     }
 
-    public void imprimirCarrinho()
+    public void limpar_carrinho()
     {
-
+        Lista_carrinho.clear();
     }
+
 }
