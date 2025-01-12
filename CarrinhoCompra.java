@@ -61,6 +61,7 @@ public class CarrinhoCompra
                                 this.carrinho[qtd_carrinho]=aux;
                                 qtd_carrinho++;
                                 System.out.println("Inserido com sucesso!\n");
+                                return;
                             }
                                 
                         }
@@ -90,7 +91,7 @@ public class CarrinhoCompra
             {
                 if (carrinho[i].getNome().equals(estoque_carrinho.estoque[j].getNome()))
                 {
-                    estoque_carrinho.estoque[j].quantidade -= carrinho[i].quantidade;
+                    estoque_carrinho.estoque[j].setQuantidade(estoque_carrinho.estoque[j].getQuantidade() - carrinho[i].getQuantidade());
                 }
                     
             }
