@@ -1,42 +1,39 @@
-import java.util.ArrayList;
-
 public class EstoqueProdutos {
-    ProdutoEstoque[] estoque; 
-    public int qtd_produtos;
+    ProdutoEstoque[] estoque;
+    private int qtd_estoque;
 
-    public int get_quantidade()
+    public int get_qtd_estoque()
     {
-        return this.qtd_produtos;
+        return this.qtd_estoque;
     }
 
     public EstoqueProdutos()
     {
         this.estoque = new ProdutoEstoque[100];
-        this.qtd_produtos=0;
+        this.qtd_estoque =0;
     }
 
     public void adicionaProduto(ProdutoEstoque produto)
     {
-        for (int i=0; i<qtd_produtos; i++)
+        for (int i = 0; i< qtd_estoque; i++)
         {
             if (estoque[i].nome.equals(produto.nome))
             {
-                 if (estoque[i].valor != produto.valor)
-                 {
-                     estoque[i].valor = produto.valor;
-                 } 
-                estoque[i].quantidade += produto.quantidade;
+                if (estoque[i].valor != produto.valor)
+                {
+                    estoque[i].valor = produto.valor;
+                }
+                estoque[i].qtd_produto += produto.qtd_produto;
                 return;
             }
         }
-        estoque[qtd_produtos]=produto;
-        qtd_produtos++;
+        estoque[qtd_estoque]=produto;
+        qtd_estoque++;
     }
 
     public void imprimeCatalogo(){
-        for (int i=0; i<qtd_produtos; i++){
-            System.out.println("Item: "+ estoque[i].getNome() + "  - Valor: " + estoque[i].getValor
-            () + "  - Quantidade: " + estoque[i].getQuantidade());
+        for (int i = 0; i< qtd_estoque; i++){
+            this.estoque[i].exibe();
         }
         System.out.println("");
     }

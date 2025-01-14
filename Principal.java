@@ -1,12 +1,15 @@
+
 import java.util.Scanner;
-public class Principal 
+public class Principal
 {
     public static void main(String[] args){
         EstoqueProdutos estoque = new EstoqueProdutos();
         //estoque.adicionaProduto(new Monitor(1000,10));
         //estoque.adicionaProduto(new Telefone(3000,5));
-        estoque.adicionaProduto(new Teclado(50,100));
-        
+        estoque.adicionaProduto(new Eletrodomestico("geladeira", 5000,100, "A+", 54, "Bivolt"));
+        estoque.adicionaProduto(new Eletrodomestico("tv", 1000,10, "A++", 20, "110"));
+        estoque.adicionaProduto(new Movel("sofa", 2000, 10, "Madeira", 2, 1.50, 1.25));
+        estoque.adicionaProduto(new Eletronico("celular",2000,10,true,false));
 
         // Começando a fazer o "menu"
         Scanner ler = new Scanner(System.in); // o scanf do java é essa classe Scanner
@@ -38,15 +41,15 @@ public class Principal
                     // Imprimir catalogo
                     estoque.imprimeCatalogo();
                     break;
-                    case 3:
+                case 3:
                     // Finalizar compra
                     System.out.println("\nPor favor escolha o método de pagamento:");
                     System.out.println("1 - Crédito (+5% de acréscimo)");
                     System.out.println("2 - Débito (5% de desconto)");
                     System.out.println("3 - Dinheiro (10% de desconto)");
                     System.out.println("4 - Pix (10% de desconto)");
-                    int metodoPagamento = ler.nextInt(); 
-                    ler.nextLine(); 
+                    int metodoPagamento = ler.nextInt();
+                    ler.nextLine();
                     String pagamento = "";
                     switch (metodoPagamento) {
                         case 1:
@@ -77,7 +80,7 @@ public class Principal
                         }
                     }
                     break;
-                
+
                 case 4:
                     System.out.println("Obrigado por acessar a Nuno Eletromóveis!");
                     opcao=5;
