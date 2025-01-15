@@ -14,6 +14,10 @@ abstract class ProdutoEstoque {
         this.qtd_produto += soma;
     }
 
+    public void subtrai_qtd_produto(int soma) {
+        this.qtd_produto -= soma;
+    }
+
     public void set_qtd_produto(int value)
     {
         this.qtd_produto = value;
