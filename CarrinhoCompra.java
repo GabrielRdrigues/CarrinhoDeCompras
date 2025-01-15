@@ -69,10 +69,41 @@ public class CarrinhoCompra
 
     }
 
+    public void removeItem(String nome, int quantidade) {
+        int indice_carrinho = achar_indice(nome);
+    
+        if (indice_carrinho >= 0) { // Verifica se o item está no carrinho
 
-    public void finalizaCompra(String metodo_pagamento)
+            if (quantidade > carrinho[indice_carrinho].get_qtd_produto()) {
+
+                System.out.println("Não é possível remover mais do que a quantidade presente no carrinho.\n");
+
+            } else if (quantidade == carrinho[indice_carrinho].get_qtd_produto()) {// Remove o item completamente do carrinho
+
+                
+                for (int i = indice_carrinho; i < qtd_carrinho - 1; i++) {
+                    carrinho[i] = carrinho[i + 1]; //Move os itens para preencher o espaço
+                }
+
+                carrinho[qtd_carrinho - 1] = null; // Remove referência ao último item
+                qtd_carrinho--;
+                System.out.println("Item removido do carrinho com sucesso!\n");
+
+            } else {  // Reduz apenas a quantidade especificada
+              
+                carrinho[indice_carrinho].subtrai_qtd_produto(quantidade);
+                System.out.println("Quantidade alterada com sucesso!\n");
+
+            }
+        } else {
+            System.out.println("Item não encontrado no carrinho.\n");
+        }
+    }
+
+
+    public void finalizaCompra(int metodoPagamento)
     {
-        System.out.println("A soma dos produtos: " + calculaTotal(metodo_pagamento));
+        System.out.println("A soma dos produtos: " + calculaTotal(metodoPagamento));
         for (int i=0; i<this.qtd_carrinho; i++)
         {
             for (int j = 0; j<estoque_carrinho.get_qtd_estoque(); j++)
@@ -87,19 +118,19 @@ public class CarrinhoCompra
         System.out.println("Compra finalizada com sucesso. Obrigado por comprar na nossa loja!\n");
     }
 
-    public double calculaTotal(String metodo_pagamento)
+    public double calculaTotal(int metodoPagamento)
     {
         double desconto = 0;
 
         // Determina o desconto ou acréscimo baseado no método de pagamento
-        if(metodo_pagamento.equalsIgnoreCase("crédito"))
-            desconto = 0.05; // Acréscimo de 5%
-        if(metodo_pagamento.equalsIgnoreCase("debito"))
-            desconto = -0.05; // Desconto de 5%
-        if(metodo_pagamento.equalsIgnoreCase("dinheiro"))
-            desconto = -0.1; // Desconto de 10%
-        if(metodo_pagamento.equalsIgnoreCase("pix"))
-            desconto = -0.1; // Desconto de 10%
+        if(metodoPagamento == 1)
+            desconto = 0.05; //Crédito - Acréscimo de 5%
+        if(metodoPagamento == 2)
+            desconto = -0.05; //Débito - Desconto de 5%
+        if(metodoPagamento == 3)
+            desconto = -0.1; // Dinheiro - Desconto de 10%
+        if(metodoPagamento == 4)
+            desconto = -0.1; // Pix - Desconto de 10%
 
         double soma = 0;
 
