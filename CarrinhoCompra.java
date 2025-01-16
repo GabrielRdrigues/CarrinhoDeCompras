@@ -63,9 +63,11 @@ public class CarrinhoCompra
                 }
             }
         }
-
-        if (i > estoque_carrinho.get_qtd_estoque())
+        System.out.println(i);
+        if (i >= estoque_carrinho.get_qtd_estoque())
+        {
             System.out.println("Produto requisitado em falta ou está registrado com nome diferente\n");
+        }
 
     }
 

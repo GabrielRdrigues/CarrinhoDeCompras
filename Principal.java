@@ -1,10 +1,10 @@
 import java.util.Scanner;
 public class Principal
 {
-    public static void main(String[] args){
+    public static void main(String[] args)
+    {
         EstoqueProdutos estoque = new EstoqueProdutos();
-        //estoque.adicionaProduto(new Monitor(1000,10));
-        //estoque.adicionaProduto(new Telefone(3000,5));
+        CarrinhoCompra carrinho = new CarrinhoCompra(estoque);
         estoque.adicionaProduto(new Eletrodomestico("geladeira", 5000,100, "A+", 54, "Bivolt"));
         estoque.adicionaProduto(new Eletrodomestico("tv", 1000,10, "A++", 20, "110"));
         estoque.adicionaProduto(new Movel("sofa", 2000, 10, "Madeira", 2, 1.50, 1.25));
@@ -16,7 +16,6 @@ public class Principal
 
         System.out.println("Bem vindo as lojas Nuno Eletromóveis\n");
 
-        CarrinhoCompra carrinho = new CarrinhoCompra(estoque);
         while(opcaoCodigo != 5)
 
         {
@@ -28,12 +27,14 @@ public class Principal
 
             MenuOpcoes opcao = MenuOpcoes.fromCodigo(opcaoCodigo); // Converte o código numérico para o enum
 
-            if (opcao == null) {
+            if (opcao == null) 
+            {
                 System.out.println("Opção inválida");
                 continue;
             }
 
-            switch(opcao) {
+            switch(opcao) 
+            {
                 case IMPRIMIR_CATALOGO:
                     // Imprimir catálogo
                     estoque.imprimeCatalogo();
@@ -42,7 +43,7 @@ public class Principal
                     // Inserir item no carrinho
                     System.out.print("Digite o nome do item: ");
                     String item = ler.nextLine();
-                    System.out.println("Digite a quantidade do item:");
+                    System.out.println("Digite a quantidade do item: ");
                     int quantidade_item = ler.nextInt();
                     carrinho.adicionaItem(item, quantidade_item);
                     break;
@@ -50,7 +51,7 @@ public class Principal
                     // Remover item do carrinho
                     System.out.print("Digite o nome do item a ser removido: ");
                     String itemRemover = ler.nextLine();
-                    System.out.println("Digite a quantidade do item a ser removida:");
+                    System.out.println("Digite a quantidade do item a ser removida: ");
                     int quantidadeRemover = ler.nextInt();
                     carrinho.removeItem(itemRemover, quantidadeRemover);
                     break;
@@ -65,7 +66,8 @@ public class Principal
                     int metodoPagamento = ler.nextInt();
                     ler.nextLine(); // Limpa o buffer
                 
-                    if (metodoPagamento >= 1 && metodoPagamento <= 4) {
+                    if (metodoPagamento >= 1 && metodoPagamento <= 4) 
+                    {
 
                         carrinho.finalizaCompra(metodoPagamento); 
                         carrinho.limpar_carrinho();
@@ -73,11 +75,13 @@ public class Principal
                         if (ler.next().charAt(0) == 'S')
                             break;
                             
-                        else {
+                        else 
+                        {
                             System.out.println("Obrigado por comprar na Nuno Eletromóveis!");
                             opcaoCodigo = 5;
                         }
-                    } else {
+                    } else 
+                    {
                         System.out.println("Opção inválida. Compra cancelada.");
                     }
                     break;
